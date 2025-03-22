@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3085307322632234566}
   - component: {fileID: 8021191398814938566}
+  - component: {fileID: 7461476740784216629}
   m_Layer: 0
   m_Name: Weapon
-  m_TagString: Untagged
+  m_TagString: EnemyWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,12 +62,39 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.041446924}
+  m_Offset: {x: -0.029256105, y: -0.041446924}
   serializedVersion: 2
-  m_Radius: 0.18777227
+  m_Radius: 0.21702838
+--- !u!50 &7461476740784216629
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3544971493173258649}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4191107962225866546
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,6 +108,7 @@ GameObject:
   - component: {fileID: 3921029899441199666}
   - component: {fileID: 6172909289025541536}
   - component: {fileID: -2353942053008604909}
+  - component: {fileID: 2475096650405249755}
   m_Layer: 0
   m_Name: Enemy_01
   m_TagString: Untagged
@@ -202,7 +231,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &-2353942053008604909
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -248,3 +277,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5113735, y: 1.324156}
   m_EdgeRadius: 0
+--- !u!114 &2475096650405249755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4191107962225866546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b29fe2c124487e546bbb009e4943a171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  atkDistance: 0.85
