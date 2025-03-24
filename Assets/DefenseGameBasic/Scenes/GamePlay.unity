@@ -450,6 +450,60 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b01a5deaf7fe801418bc5b63651d9dd1, type: 3}
+--- !u!1 &1397664783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1397664785}
+  - component: {fileID: 1397664784}
+  m_Layer: 0
+  m_Name: ShopManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1397664784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397664783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a8c5bc026a4aa848b91b1cb9d27ce90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - playerPrefab: {fileID: 446104479297872557, guid: b01a5deaf7fe801418bc5b63651d9dd1, type: 3}
+    price: 0
+    previewImg: {fileID: 21300000, guid: e4bcb70e74fa6bb40ace3c91bee31e7a, type: 3}
+  - playerPrefab: {fileID: 2395574855637340700, guid: fe0e6d34a6e14444087e72743a94580a, type: 3}
+    price: 400
+    previewImg: {fileID: 21300000, guid: 1ae84e52293830e42b4396b2e542a862, type: 3}
+  - playerPrefab: {fileID: 2880942542175811735, guid: 98d18824a91bd794b90a4923fca63b5b, type: 3}
+    price: 800
+    previewImg: {fileID: 21300000, guid: 2744ce7656bb7bf44b07cd64f53bef29, type: 3}
+--- !u!4 &1397664785
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397664783}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.1081219, y: -5.404344, z: -0.12600636}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -458,3 +512,4 @@ SceneRoots:
   - {fileID: 897721486}
   - {fileID: 1244268240}
   - {fileID: 616840265}
+  - {fileID: 1397664785}
