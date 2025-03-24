@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
     public float spawnTime;
     public Enemy[] enemyPrefabs;
     private bool m_isGameOver;
+    private int m_score;
+
+    public int Score { get => m_score; set => m_score = value; }
+
     void Start()
     {
         StartCoroutine(SpawnEnemy());

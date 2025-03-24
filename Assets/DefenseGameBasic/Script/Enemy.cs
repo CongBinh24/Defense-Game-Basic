@@ -10,11 +10,15 @@ public class Enemy : MonoBehaviour, IComponentChecking
     public float speed;
     public float atkDistance;
 
+    private bool m_isDead;
+    private GameManager m_gm;
+
     private void Awake()
     {
         m_anim = GetComponent<Animator>();
         m_rb = GetComponent<Rigidbody2D>();
         m_player = FindObjectOfType<Player>();
+        m_gm = FindObjectOfType<GameManager>();
     }
     void Start()
     {
@@ -46,10 +50,15 @@ public class Enemy : MonoBehaviour, IComponentChecking
 
     public void Die()
     {
-        if(IsComponentsNull()) return;
+        if(IsComponentsNull() || m_isDead) return;
 
+        m_isDead = true;
         m_anim.SetTrigger(Const.DEAD_ANIM);
         m_rb.velocity = Vector2.zero;
         gameObject.layer = LayerMask.NameToLayer(Const.DEAD_LAYER);
+        if (m_gm)
+            m_gm.Score++;
+
+        Destroy(gameObject, 2f);
     }
 }
