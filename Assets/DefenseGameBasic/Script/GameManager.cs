@@ -2,20 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IComponentChecking
 {
     public float spawnTime;
     public Enemy[] enemyPrefabs;
     private bool m_isGameOver;
     private int m_score;
 
+    public GUIManager guiMng;
     public int Score { get => m_score; set => m_score = value; }
 
     void Start()
     {
-        StartCoroutine(SpawnEnemy());
+        if(IsComponentsNull()) return;
+        guiMng.ShowGameGUI(false);
+        guiMng.UpdateMainCoins();
     }
 
+    public void PlayGame()
+    {
+        StartCoroutine(SpawnEnemy());
+        guiMng.ShowGameGUI(true);
+        guiMng.UpdateGamePlayCoins();
+    }
+    public bool IsComponentsNull()
+    {
+        return guiMng == null; 
+    }
     // Update is called once per frame
     void Update()
     {
@@ -41,4 +54,6 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(spawnTime);
         }
     }
+
+
 }

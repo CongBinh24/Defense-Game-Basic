@@ -31,7 +31,11 @@ public class GUIManager : MonoBehaviour
         if(mainCoinTxt)
             mainCoinTxt.text = Pref.coins.ToString();
 
-        if(gamePlayCoinText)
+    }
+
+    public void UpdateGamePlayCoins()
+    {
+        if (gamePlayCoinText)
             gamePlayCoinText.text = Pref.coins.ToString();
     }
 }

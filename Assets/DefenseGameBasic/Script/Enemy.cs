@@ -59,9 +59,11 @@ public class Enemy : MonoBehaviour, IComponentChecking
         m_rb.velocity = Vector2.zero;
         gameObject.layer = LayerMask.NameToLayer(Const.DEAD_LAYER);
         m_gm.Score++;
+       
         int coinBonus = Random.Range(minCoinBonus,maxCoinBonus);
-        Pref.coins = coinBonus;
-        Debug.Log(coinBonus);
+        Pref.coins += coinBonus;
+        if(m_gm.guiMng)
+            m_gm.guiMng.UpdateGamePlayCoins();
 
         Destroy(gameObject, 2f);
     }
