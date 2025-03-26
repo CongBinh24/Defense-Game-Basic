@@ -9,10 +9,13 @@ public class Player : MonoBehaviour, IComponentChecking
     private bool m_isAttacked;
     private Animator m_anim;
     private bool m_isDead;
+    private GameManager m_gm;
+
     private void Awake()
     {
         m_anim = GetComponent<Animator>();
         m_curAtkRate = atkRate;
+        m_gm = FindObjectOfType<GameManager>();
     }
     void Start()
     {
@@ -20,7 +23,7 @@ public class Player : MonoBehaviour, IComponentChecking
     }
     public bool IsComponentsNull()
     {
-        return m_anim == null;
+        return m_anim == null || m_gm == null;
     }
     // Update is called once per frame
     void Update()
@@ -57,10 +60,10 @@ public class Player : MonoBehaviour, IComponentChecking
 
         if (col.CompareTag(Const.ENEMY_WEAPON_TAG) && !m_isDead)
         {
-            Debug.Log("Da va cham");
             m_anim.SetTrigger(Const.DEAD_ANIM);
             m_isDead = true;
             gameObject.layer = LayerMask.NameToLayer(Const.DEAD_LAYER);
+            m_gm.GameOver();
         }
     }
 }

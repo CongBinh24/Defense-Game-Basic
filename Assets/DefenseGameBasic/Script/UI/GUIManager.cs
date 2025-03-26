@@ -7,7 +7,7 @@ public class GUIManager : MonoBehaviour
 {
     public GameObject homeGUI;
     public GameObject gameGUI;
-    public Dialog gameoverDialogl;
+    public Dialog gameoverDialog;
     public Text mainCoinTxt;
     public Text gamePlayCoinText;
 

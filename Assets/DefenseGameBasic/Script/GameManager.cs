@@ -29,10 +29,16 @@ public class GameManager : MonoBehaviour, IComponentChecking
     {
         return guiMng == null; 
     }
-    // Update is called once per frame
-    void Update()
+
+    public void GameOver()
     {
-        
+        if(m_isGameOver) return;
+
+        m_isGameOver = true;
+        Pref.bestScore = m_score;
+
+        if(guiMng.gameoverDialog)
+            guiMng.gameoverDialog.Show(true);
     }
 
     IEnumerator SpawnEnemy()
