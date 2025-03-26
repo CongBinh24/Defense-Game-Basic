@@ -15,17 +15,18 @@ public class ShopItemUI : MonoBehaviour
         if(hud)
             hud.sprite = item.previewImg;
 
-        bool isUnclocked = Pref.GetBool(Const.PLAYER_PREFIX_PREF + itemIdx);
+        bool isUnlocked = Pref.GetBool(Const.PLAYER_PREFIX_PREF + itemIdx);
 
-        if (isUnclocked)
+        if (isUnlocked)
         {
             if (Pref.curPlayerId == itemIdx)
             {
                 if (priceTxt)
                     priceTxt.text = "Active";
-                else if (priceTxt) 
-                    priceTxt.text = "owned";
-            }
+            }else if (priceTxt)
+            {
+                priceTxt.text = "Owned";
+            }  
         }
         else
         {

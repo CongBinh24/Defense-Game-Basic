@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour, IComponentChecking
     public Enemy[] enemyPrefabs;
     private bool m_isGameOver;
     private int m_score;
-
+    private Player m_curPlayer;
+    public ShopManager shopMng;
     public GUIManager guiMng;
     public int Score { get => m_score; set => m_score = value; }
 
@@ -19,17 +20,34 @@ public class GameManager : MonoBehaviour, IComponentChecking
         guiMng.UpdateMainCoins();
     }
 
+    public bool IsComponentsNull()
+    {
+        return guiMng == null || shopMng == null ;
+    }
+
     public void PlayGame()
     {
+        ActivePlayer();
+
         StartCoroutine(SpawnEnemy());
         guiMng.ShowGameGUI(true);
         guiMng.UpdateGamePlayCoins();
     }
-    public bool IsComponentsNull()
-    {
-        return guiMng == null; 
-    }
 
+    public void ActivePlayer()
+    {
+        if (m_curPlayer)
+            Destroy(m_curPlayer.gameObject);
+
+        var shopItems = shopMng.items;
+
+        if (shopItems == null || shopItems.Length <= 0) return;
+
+        var newPlayerPb = shopItems[Pref.curPlayerId].playerPrefab;
+
+        if(newPlayerPb)
+            m_curPlayer = Instantiate(newPlayerPb, new Vector3 (-7f,-1f,0),Quaternion.identity);  
+    }
     public void GameOver()
     {
         if(m_isGameOver) return;
