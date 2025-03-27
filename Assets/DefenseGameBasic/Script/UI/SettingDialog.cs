@@ -1,18 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class SettingDialog : MonoBehaviour
+public class SettingDialog : Dialog, IComponentChecking
 {
-    // Start is called before the first frame update
-    void Start()
+    public Slider musicSlider;
+    public Slider soundSlider;
+    private AudioController m_auCtr;
+
+    public bool IsComponentsNull()
     {
-        
+        return m_auCtr == null || musicSlider == null || soundSlider == null;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Show(bool isShow)
     {
-        
+        base.Show(isShow);
+
+        m_auCtr = FindObjectOfType<AudioController>();
+
+        if (IsComponentsNull()) return;
+
+        musicSlider.value = Pref.musicVol;
+        soundSlider.value = Pref.soundVol;
+
     }
+
+    public void OnMusicChange(float value)
+    {
+        if (IsComponentsNull()) return;
+
+        m_auCtr.musicVol = value;
+        m_auCtr.musicAus.volume = value;
+        Pref.musicVol = value;
+    }
+
+    public void OnMSoundChange(float value)
+    {
+        if (IsComponentsNull()) return;
+
+        m_auCtr.soundVol = value;
+        m_auCtr.soundAus.volume = value;
+        Pref.soundVol = value;
+    }
+
+
+
 }
