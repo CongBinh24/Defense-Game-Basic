@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour, IComponentChecking
     private Player m_curPlayer;
     public ShopManager shopMng;
     public GUIManager guiMng;
+
+    public AudioController auCtr;
     public int Score { get => m_score; set => m_score = value; }
 
     void Start()
@@ -22,16 +24,20 @@ public class GameManager : MonoBehaviour, IComponentChecking
 
     public bool IsComponentsNull()
     {
-        return guiMng == null || shopMng == null ;
+        return guiMng == null || shopMng == null || auCtr == null;
     }
 
     public void PlayGame()
     {
+        if (IsComponentsNull()) return;
+
         ActivePlayer();
 
         StartCoroutine(SpawnEnemy());
         guiMng.ShowGameGUI(true);
         guiMng.UpdateGamePlayCoins();
+
+        auCtr.PlayBgm(); 
     }
 
     public void ActivePlayer()
@@ -57,6 +63,8 @@ public class GameManager : MonoBehaviour, IComponentChecking
 
         if(guiMng.gameoverDialog)
             guiMng.gameoverDialog.Show(true);
+
+        auCtr.PlaySound(auCtr.gameover);
     }
 
     IEnumerator SpawnEnemy()
