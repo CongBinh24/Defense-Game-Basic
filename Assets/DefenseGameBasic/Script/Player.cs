@@ -28,9 +28,10 @@ public class Player : MonoBehaviour, IComponentChecking
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !m_isAttacked)
+        if (Time.timeScale == 1 && Input.GetMouseButtonDown(0) && !m_isAttacked)
         {
             if (IsComponentsNull()) return;
+
             m_anim.SetBool(Const.ATTACK_ANIM, true);
             m_isAttacked = true;
         }
